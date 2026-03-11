@@ -22,6 +22,8 @@ var _ MappedNullable = &CreateFederatedIdentityProviderResponse{}
 
 // CreateFederatedIdentityProviderResponse struct for CreateFederatedIdentityProviderResponse
 type CreateFederatedIdentityProviderResponse struct {
+	// Unique ID of the federated identity provider.
+	Id           string `json:"id"`
 	// list of assertions of the federated identity provider
 	Assertions []CreateFederatedIdentityProviderResponseAssertionsInner `json:"assertions"`
 	// Creation time of the federated identity provider.
@@ -82,6 +84,16 @@ func (o *CreateFederatedIdentityProviderResponse) SetAssertions(v []CreateFedera
 	o.Assertions = v
 }
 
+// GetId returns the Id field value
+func (o *CreateFederatedIdentityProviderResponse) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
 // GetCreatedAt returns the CreatedAt field value
 func (o *CreateFederatedIdentityProviderResponse) GetCreatedAt() time.Time {
 	if o == nil {
@@ -99,6 +111,11 @@ func (o *CreateFederatedIdentityProviderResponse) GetCreatedAtOk() (*time.Time, 
 		return nil, false
 	}
 	return &o.CreatedAt, true
+}
+
+// SetId sets field value
+func (o *CreateFederatedIdentityProviderResponse) SetId(v string) {
+	o.Id = v
 }
 
 // SetCreatedAt sets field value
@@ -188,6 +205,7 @@ func (o CreateFederatedIdentityProviderResponse) MarshalJSON() ([]byte, error) {
 
 func (o CreateFederatedIdentityProviderResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
 	toSerialize["assertions"] = o.Assertions
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["issuer"] = o.Issuer
@@ -201,6 +219,7 @@ func (o *CreateFederatedIdentityProviderResponse) UnmarshalJSON(data []byte) (er
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"id",
 		"assertions",
 		"createdAt",
 		"issuer",
